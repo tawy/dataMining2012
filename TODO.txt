@@ -1,0 +1,3 @@
+* Distance for every element in the test set to the grade given by the user in the base set as an "error" function
+* Presentation
+* Comment the code a bit more
