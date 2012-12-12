@@ -12,7 +12,7 @@ function simi=caculateSimilarity(uim,user_id,u)
          simi=0;
          return;
      else
-     compare_array=compare_array(:,1:index-1);
-     simi=1-pdist(compare_array,'cosine');
+        compare_array=compare_array(:,1:index-1);
+        simi=1-pdist(compare_array,'cosine');
      end
 end

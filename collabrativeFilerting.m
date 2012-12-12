@@ -59,29 +59,39 @@ for i=1:len2
          predict(i,1)=similarUsers(:,3)'*weight;
     end
 end
-temp=testset(1:len2,:);
 
-for i=1:len2
-    if predict(i,1)>=3
-        predict(i,1)=1;
-    else
-        predict(i,1)=0;
-    end
-    
-    if temp(i,3)>=3
-        temp(i,3)=1;
-    else
-        temp(i,3)=0;
-    end
+maxdist=0.2:0.2:4;
+errors=zeros(size(maxdist));
+for i=maxdist
+    errors(round(i/0.2)) = error_distance(predict, testset(1:len2,3),i);
 end
 
-error=0;
-for i=1:len2
-    if temp(i,3)~=predict(i,1)
-        error=error+1;
-    end
-end
-disp(error/len2);
+plot(maxdist,errors);
+
+
+% temp=testset(1:len2,:);
+% 
+% for i=1:len2
+%     if predict(i,1)>=3
+%         predict(i,1)=1;
+%     else
+%         predict(i,1)=0;
+%     end
+%     
+%     if temp(i,3)>=3
+%         temp(i,3)=1;
+%     else
+%         temp(i,3)=0;
+%     end
+% end
+% 
+% error=0;
+% for i=1:len2
+%     if temp(i,3)~=predict(i,1)
+%         error=error+1;
+%     end
+% end
+% disp(error/len2);
     
 
 
