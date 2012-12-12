@@ -9,7 +9,6 @@ function [ weight_matrix, user_avg ] = weigh_user(user_ratings)
 
 %Computes the average grade the user has given to every movie he graded
 user_avg = NaN(size(user_ratings, 2), 1);
-disp(size(user_ratings, 2));
 for user = 1:size(user_ratings, 2)
     movie_rating_sum = 0;
     nb_rating = 0;
@@ -55,7 +54,7 @@ for user_a = 1:size(user_ratings, 2)
                     (isnan(user_ratings(movie, user_a))) ...
                 ||  (isnan(user_ratings(movie, user_b)))))
             weight_matrix(user_a, user_b) = user_cov(user_a, user_b) / ...
-                sqrt(user_cov(user_a, user_a)) * sqrt(user_cov(user_b, user_b));
+                (sqrt(user_cov(user_a, user_a)) * sqrt(user_cov(user_b, user_b)));
         end
     end
 end
