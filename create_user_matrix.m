@@ -12,7 +12,7 @@ user_rating = NaN(size(unique(ratings(:, film)), 1), ...
                     size(unique(ratings(:, user)), 1));
 
 %Fill the rating matrix
-for i = 1:size(ratings)
+for i = 1:size(ratings, 2)
     user_rating(ratings(i, film), ratings(i, user)) = ratings(i, rating);
 end
 
