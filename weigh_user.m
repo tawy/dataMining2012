@@ -16,8 +16,6 @@ for user = 1:size(user_ratings, 2)
         if (~isnan(user_ratings(movie, user)))
             movie_rating_sum = movie_rating_sum + user_ratings(movie, user);
             nb_rating = nb_rating + 1;
-%            disp(nb_rating);
-%            disp(user_ratings(movie, user));
         end
     end
     user_avg(user) = movie_rating_sum / nb_rating;
@@ -50,9 +48,7 @@ end
 weight_matrix = NaN(size(user_ratings, 2), size(user_ratings, 2));
 for user_a = 1:size(user_ratings, 2)
     for user_b = 1:size(user_ratings, 2);
-        if (~( ...
-                    (isnan(user_ratings(movie, user_a))) ...
-                ||  (isnan(user_ratings(movie, user_b)))))
+        if (~(isnan(user_cov(user_a, user_b))))
             weight_matrix(user_a, user_b) = user_cov(user_a, user_b) / ...
                 (sqrt(user_cov(user_a, user_a)) * sqrt(user_cov(user_b, user_b)));
         end
